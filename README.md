@@ -1,188 +1,161 @@
-# Personal Professional Card Astro
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+const dishes = [
+  {
+    title: "Grill Prawn Pomelo Salad",
+    description:
+      "Juicy grilled prawns paired with refreshing pomelo salad, offering a balance of sweet, tangy, and savory flavors in a tropical bite.",
+    image: "/grill prawn pomelo salad.jpg",
+  },
+  {
+    title: "Grilled Jumbo Prawn with Garlic Butter",
+    description:
+      "Jumbo prawns grilled slowly and basted with aromatic garlic butter, resulting in a tender texture and rich flavor profile.",
+    image: "/grille bake jumbo prawn.jpg",
+  },
+  {
+    title: "Jimbaran Grilled Fish",
+    description:
+      "Balinese-style grilled fish with sambal matah and smoky aroma, bringing an authentic island taste.",
+    image: "/jimbaran grilled fish.jpg",
+  },
+  {
+    title: "Homemade Gnocchi",
+    description:
+      "Handmade gnocchi with a soft, chewy texture, served with a light sauce that highlights natural ingredients.",
+    image: "/home made gnoochi.jpg",
+  },
+  {
+    title: "Grilled Prawn with Caponata",
+    description:
+      "Grilled prawns paired with sweet and sour Sicilian-style caponata, offering a flavorful Mediterranean experience.",
+    image: "/grilled prawn with caponata.jpg",
+  },
+  {
+    title: "Roasted Butternut Squash",
+    description:
+      "Perfectly caramelized roasted butternut squash with naturally sweet, creamy texture.",
+    image: "/roasted butter nut squash.jpg",
+  },
+  {
+    title: "Seafood Risotto",
+    description:
+      "Creamy risotto with fresh seafood like prawns, clams, and squid, enriched with a deep seafood broth.",
+    image: "/saefood risotto.jpg",
+  },
+  {
+    title: "Summer Poached Prawn Salad",
+    description:
+      "Light summer salad with poached prawns, crisp vegetables, and a refreshing citrus dressing.",
+    image: "/summer poach prawn salad.jpg",
+  },
+  {
+    title: "Surf and Turf",
+    description:
+      "Classic pairing of grilled beef steak and prawns, served with a modern touch and signature homemade sauce.",
+    image: "/surf n turf.jpg",
+  },
+  {
+    title: "Salmon Gravlax",
+    description:
+      "Salt- and sugar-cured salmon with dill, presented simply to showcase the fresh flavor and tender texture of the fish.",
+    image: "/salmon gravlax.jpg",
+  },
+];
+
+const cvData = {
+  name: "I Putu Adi Suarsana",
+  position: "Culinary Professional",
+  summary:
+    "Accomplished culinary professional with expertise in knife skills, mise en place, and portion sizing. Demonstrates proficiency in food quality control and staff training and development, ensuring high standards in every kitchen environment. Experienced in inventory rotation and restaurant openings, contributing to efficient operations and successful launches. Skilled in scheduling and multitasking, effectively managing time and resources to optimise productivity. Committed to advancing culinary excellence through continuous improvement and innovation.",
+  experience: [
+    {
+      role: "Chef de Partie",
+      place: "Hotel XYZ",
+      years: "2021 - 2024",
+    },
+    {
+      role: "Commis Chef",
+      place: "Restoran ABC",
+      years: "2019 - 2021",
+    },
+  ],
+  education: "Diploma in Culinary Arts - Culinary Academy Nusantara",
+  contact: {
+    email: "suarsana@gmail.com",
+    phone: "081234567890",
+    location: "Bali, Indonesia",
+    linkedin: "https://linkedin.com/in/suarsana"
+  },
+  cvFile: "/cv_adi_suarsana.pdf"
+};
+
+export default function Portfolio() {
+  return (
+    <div className="grid gap-10 p-4 max-w-5xl mx-auto">
+      <section className="grid gap-2">
+        <h1 className="text-3xl font-bold">Dish Portfolio</h1>
+        <p className="text-muted-foreground">
+          A showcase of my culinary creations highlighting flavor, technique, and presentation.
+        </p>
+      </section>
+
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {dishes.map((dish, index) => (
+          <Card key={index} className="rounded-2xl overflow-hidden shadow-md">
+            <img
+              src={dish.image}
+              alt={dish.title}
+              className="w-full h-48 object-cover"
+            />
+            <CardContent className="p-4">
+              <h2 className="text-xl font-semibold mb-2">{dish.title}</h2>
+              <p className="text-sm text-muted-foreground">{dish.description}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </section>
+
+      <section className="grid gap-2">
+        <h2 className="text-2xl font-bold mt-10">Curriculum Vitae</h2>
+        <div className="bg-white shadow-md rounded-2xl p-6 grid gap-3">
+          <h3 className="text-xl font-semibold">{cvData.name}</h3>
+          <p className="text-muted-foreground">{cvData.position}</p>
+          <p>{cvData.summary}</p>
+          <div>
+            <h4 className="font-semibold">Experience</h4>
+            <ul className="list-disc list-inside">
+              {cvData.experience.map((exp, idx) => (
+                <li key={idx}>
+                  {exp.role}, {exp.place} ({exp.years})
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold">Education</h4>
+            <p>{cvData.education}</p>
+          </div>
+          <div>
+            <h4 className="font-semibold">Contact</h4>
+            <p>Email: {cvData.contact.email}</p>
+            <p>Phone: {cvData.contact.phone}</p>
+            <p>Location: {cvData.contact.location}</p>
+            <p>LinkedIn: <a className="text-blue-500 underline" href={cvData.contact.linkedin} target="_blank">{cvData.contact.linkedin}</a></p>
+          </div>
+          <div>
+            <Button asChild className="mt-4 w-fit">
+              <a href={cvData.cvFile} download>
+                Download CV
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
 
-"Hi there!, I'm Brian. I hope this small template helps you gain visibility while you build great projects. Thank you for using it. I wish you success in everything you set out to do; you will surely achieve great things.
 
-You can help me by following me, giving a Star to the template, and sharing it so others can see and use it.
-
-Have a great day!"
-
-
-![example page](pageexample.png)
-
-![performance web](performance.png)
-
-<hr/>
-
-<h3 align="center">
- ⭐ Leave a star if you like this project! ⭐️
-</h3>
-
-## Deploy
-
-[![](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://personal-card-astro.netlify.app/)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-public/
-  ├── files/
-  |      └── resume-cv.pdf
-  ├── images/
-  |      └── profile2.webp
-  ├── favicon.ico
-src/
-  ├── components/
-  │     └── Card.astro
-  ├── layouts/
-  │     └── BaseLayout.astro
-  ├── pages/
-  │     └── index.astro
-  ├── styles/
-  │     ├── global.css
-  │     └── card.css
-```
-# User Guide
-
-This guide explains how to customize the template for your personal use. In the `src/pages/index.astro`
-
-![example code](code-1.png)
-
-## External Card Customization
-
-- **`title`**: This change will be reflected in the browser tab.
-- **`description`**: This is a metadata tag used to provide a brief description of your page in search engines.
-
-## Internal Card Customization
-
-- **`name`**: Enter your name here.
-- **`position`**: Enter your job position here.
-- **`about me`**: Write a brief description of who you are and what you do. It's recommended to keep it under 540 characters.
-- **`linkedin`** and **`github`**: Enter the URLs to your personal pages here.
-- **`cvLink`**: Provide the URL to your resume in PDF format for download.
-- **`profileImage`**: Upload your professional profile picture here.
-
-## File Management
-
-- **Resume**: Place your resume PDF file in the `public/files` folder.
-- **Profile Image**: Place your profile image in the `public/images` folder. It's recommended to use the .webp format for better web performance.
-- **Favicon**: Replace the `public/favicon.ico` file with your own, preferably keeping the same file name.
-
-## Layout Customization
-
-- In the `src/layouts` folder, you will find the `BaseLayout.astro` file. This file contains the complete HTML structure. Here, you will see references to the favicon, Google fonts, and Bootstrap icons.
-
-## Style Customization
-
-- In the `src/styles` folder, you will find the styles for the Card. You can make visual changes here, such as modifying colors, fonts, sizes, etc.
-
-
-Easy, Right?
-
-
-# Getting Started with Your Template
-
-Follow these steps to initialize and deploy your template using Astro and Netlify.
-
-## Prerequisites
-
-Make sure you have the following installed on your machine:
-- [Node.js](https://nodejs.org/) (version 14.x or higher)
-- [npm](https://www.npmjs.com/) (comes with Node.js)
-- [Astro](https://astro.build/) (installed globally)
-
-## Installation
-
-### Option 1: Clone the Template Repository
-
-1. **Clone the Template Repository**
-
-    ```bash
-    https://github.com/alcarazbrian/professional-card-astro.git
-    cd professional-card-astro
-    ```
-
-2. **Install Dependencies**
-
-    ```bash
-    npm install
-    ```
-
-### Option 2: Download the ZIP File
-
-1. **Download the ZIP File**
-
-    Download the template as a ZIP file from the repository's GitHub page.
-
-2. **Extract the ZIP File**
-
-    Extract the contents of the ZIP file to your desired location.
-
-3. **Navigate to the Project Directory**
-
-    Open your terminal and navigate to the extracted directory.
-
-    ```bash
-    cd path-to-extracted-directory
-    ```
-
-4. **Install Dependencies**
-
-    ```bash
-    npm install
-    ```
-
-## Running the Project Locally
-
-To start the development server, run:
-
-```bash
-npm run dev
-```
-This command will start the Astro development server. You can view your site at http://localhost:4321. Any changes you make to the project files will be reflected in real time in your browser. To stop the development server, press Ctrl+C in the terminal.
-
-## Building the Project
-
-To build the project for production, run:
-
-```bash
-npm run build
-```
-
-## Deploying to Netlify
-
-### Using Netlify Drop
-
-1. **Build the Project**
-
-   Ensure your project is built by running:
-
-   ```bash
-   npm run build
-   ```
-
-2. **Drag and Drop**
-
-   Go to Netlify Drop. Drag and drop the `dist` folder from your project directory into the Netlify Drop area. This will upload and deploy your site.
-
-   Your site should now be live on Netlify. You can view the live site URL in the output of the command or from your Netlify dashboard.
-
-
-## Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-
-## 👀 Want to learn more?
-
-Feel free to check [Astro documentation](https://docs.astro.build) or jump into [Astro Discord server](https://astro.build/chat).
-
-## Contact
-
-[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alcarazbrian)
